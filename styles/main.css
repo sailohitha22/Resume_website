@@ -6,17 +6,19 @@
     --mainLinkColor: #0da2b8;
     --mainBorderColor: rgb(218, 218, 218);
     --mainBgColor: rgb(249, 250, 251);
-}
-
-* {
-    font-family: 'Readex Pro', sans-serif;
-    line-height: 1.5em;
-    box-sizing: border-box;
-    color: var(--mainTextColor);
+    --sectionBgColor: #fff;
+    --sectionPadding: 2em;
+    --cardPadding: 1.5em;
+    --cardMargin: 1.5em 0;
+    --cardBorderRadius: 8px;
+    --boxShadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 body {
-    background-color: var(--mainBgColor);            
+    font-family: 'Readex Pro', sans-serif;
+    line-height: 1.5em;
+    background-color: var(--mainBgColor);
+    color: var(--mainTextColor);
     margin: 0;
     padding: 0;
 }
@@ -37,22 +39,23 @@ li {
 }
 
 #container--main {
-    max-width: 700px;
+    max-width: 800px;
     margin: 0 auto;
-    padding: 1em;
+    padding: var(--sectionPadding);
 }
 
 .section--page {
-    padding-top: 1em;
-    padding-bottom: 1em;
+    background-color: var(--sectionBgColor);
+    padding: var(--sectionPadding);
+    border-radius: var(--cardBorderRadius);
+    box-shadow: var(--boxShadow);
+    margin-bottom: var(--cardMargin);
 }
 
 #wrapper--hero {
     display: flex;
     align-items: center;
-    gap: 4em;
-    flex-direction: column;
-    text-align: center;
+    gap: 2em;
 }
 
 #bio, a {
@@ -60,8 +63,9 @@ li {
 }
 
 #user-name {
-    font-size: 48px;
-    line-height: 1em;
+    font-size: 2.5em;
+    line-height: 1.2em;
+    margin: 0;
 }
 
 #profile-pic {
@@ -69,11 +73,12 @@ li {
     height: 150px;
     object-fit: cover;
     border-radius: 50%;
-    clip-path: circle(60% at center);
+    box-shadow: var(--boxShadow);
 }
 
 #email {
     color: var(--mainTextColor);
+    margin-top: 0.5em;
 }
 
 #socials--list {
@@ -81,7 +86,7 @@ li {
     justify-content: space-between;
     column-gap: 1em;
     flex-wrap: wrap;
-    padding-top: 1em;
+    margin-top: 1em;
 }
 
 #socials--list a {
@@ -92,60 +97,90 @@ li {
 }
 
 #socials--list a:hover {
-    font-weight: 100;
+    font-weight: 500;
     color: var(--mainLinkColor);
     font-size: 0.9em;
 }
 
-.card--work-history {
+.card--work-experience {
     border-left: 4px solid var(--mainLinkColor);
-    margin-top: 3em;
-    margin-bottom: 3em;
-    padding-left: 1.5em;
-    padding-top: 1em;
-    padding-bottom: 1em;
-    background-color: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding-left: var(--cardPadding);
+    margin: var(--cardMargin) 0;
+    background-color: var(--sectionBgColor);
+    border-radius: var(--cardBorderRadius);
+    box-shadow: var(--boxShadow);
 }
 
 .line-break {
     background-color: var(--mainBorderColor);
     height: 1px;
-    margin: 2em 0;
+    margin: 1.5em 0;
 }
 
-#wrapper--Skills__items {
+.card--work-experience strong {
+    display: block;
+    font-size: 1.2em;
+    margin-bottom: 0.5em;
+}
+
+.card--work-experience p {
+    margin: 0.5em 0;
+}
+
+.card--work-experience ul {
+    padding-left: 1em;
+    list-style-type: disc;
+}
+
+#technical-skills-wrapper {
     display: flex;
     flex-wrap: wrap;
     gap: 1em;
+    margin-top: 1em;
+}
+
+.card--tech-skill {
+    background-color: var(--sectionBgColor);
+    border: 1px solid var(--mainBorderColor);
+    border-radius: var(--cardBorderRadius);
+    padding: 1em;
+    box-shadow: var(--boxShadow);
+    flex: 1 1 calc(33.333% - 1em);
+    text-align: center;
     font-size: 0.9em;
 }
 
-.card--Skills {
-    border: 1px solid var(--mainBorderColor);
-    border-radius: 5px;
-    padding: 0.5em 1em;
-    align-items: center;
-}
-
-@media(max-width: 600px) {
+@media (max-width: 600px) {
     .section--page {
-        padding-top: 1em;
-        padding-bottom: 1em;
+        padding: 1em;
     }
 
     #wrapper--hero {
-        gap: 1em;
         flex-direction: column;
+        align-items: center;
+        gap: 1em;
     }
 
     #profile-pic {
-        width: 200px;
-        height: 200px;
+        width: 120px;
+        height: 120px;
     }
 
-    .card--work-history {
-        border-left: none;
-        padding-left: 0;
+    #user-name {
+        font-size: 2em;
+        text-align: center;
+    }
+
+    #socials--list {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card--work-experience {
+        padding-left: 1em;
+    }
+
+    .card--tech-skill {
+        flex: 1 1 100%;
     }
 }
