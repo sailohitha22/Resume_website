@@ -12,6 +12,9 @@
     --cardMargin: 1.5em 0;
     --cardBorderRadius: 8px;
     --boxShadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --skillCardBgColor: #e0f7fa; /* Light blue background for skill cards */
+    --skillCardBorderColor: #b2ebf2; /* Light blue border for skill cards */
+    --blueSideShade: #0da2b8; /* Blue side shade */
 }
 
 body {
@@ -50,6 +53,20 @@ li {
     border-radius: var(--cardBorderRadius);
     box-shadow: var(--boxShadow);
     margin-bottom: var(--cardMargin);
+    position: relative;
+    padding-left: calc(var(--sectionPadding) + 10px);
+}
+
+.section--page::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 10px;
+    background-color: var(--blueSideShade);
+    border-top-left-radius: var(--cardBorderRadius);
+    border-bottom-left-radius: var(--cardBorderRadius);
 }
 
 #wrapper--hero {
@@ -103,7 +120,7 @@ li {
 }
 
 .card--work-experience {
-    border-left: 4px solid var(--mainLinkColor);
+    border-left: 10px solid var(--blueSideShade);
     padding-left: var(--cardPadding);
     margin: var(--cardMargin) 0;
     background-color: var(--sectionBgColor);
@@ -135,24 +152,37 @@ li {
 #technical-skills-wrapper {
     display: flex;
     flex-wrap: wrap;
-    gap: 1em;
+    gap: 1.5em;
     margin-top: 1em;
 }
 
 .card--tech-skill {
-    background-color: var(--sectionBgColor);
-    border: 1px solid var(--mainBorderColor);
+    background-color: var(--skillCardBgColor); /* Light blue background */
+    border: 1px solid var(--skillCardBorderColor); /* Light blue border */
     border-radius: var(--cardBorderRadius);
-    padding: 1em;
+    padding: 1.5em;
     box-shadow: var(--boxShadow);
-    flex: 1 1 calc(33.333% - 1em);
+    flex: 1 1 calc(33.333% - 1.5em);
     text-align: center;
-    font-size: 0.9em;
+    font-size: 1em;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card--tech-skill:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 800px) {
+    .card--tech-skill {
+        flex: 1 1 calc(50% - 1.5em);
+    }
 }
 
 @media (max-width: 600px) {
     .section--page {
         padding: 1em;
+        padding-left: calc(1em + 10px);
     }
 
     #wrapper--hero {
